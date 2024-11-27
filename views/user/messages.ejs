@@ -1,0 +1,63 @@
+
+<%- include("../header.ejs") %>
+
+<section class="container mt-4">
+   <H1 class="text-center"> Messages</H1>
+   <hr>
+    <div class="row">
+     
+        <!-- From -------->
+        <div class="col-12 col-md-6 mt-2">
+          <form action="/message" method="POST">
+              <fieldset>
+                  <h2>Add Messages</h2>
+                  <div class="mb-3">
+                      <label for="" class="form-label">Libraries</label>
+                      <select name="libs" id="" class="form-select">
+                          <% x1.forEach(function(obj){ %>
+                              <option value="<%= obj._id %>"><%= obj.library %></option>
+                          <% }); %>
+                      </select>
+                  </div>
+                  <div class="mb-3">
+                      <label for="" class="form-label">Message</label>
+                      <textarea name="message" id="" rows="3" class="form-control">Message Here...</textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+              </fieldset>
+          </form>
+      </div>
+      
+      <div class="col-12 col-md-6 mt-2">
+          <h2>Messages</h2>
+          <table>
+              <tr>
+                  <th>Group Id</th>
+                  <th>Message</th>
+                  <th class="text-center">Edit</th>
+                  <th class="text-center">Delete</th>
+              </tr>
+              <% x2.forEach(function(obj){ %>
+                  <tr>
+                      <td class="msg" for="<%= obj._id %>">
+                          <%= obj.libs %> 
+                      </td>
+                 
+                      <td class="msg">
+                          <%= obj.message %>
+                      </td>
+                      <td class="text-center"><i class="bi bi-pencil-square"></i></td>
+                      <td class="text-center"><i class="bi bi-trash3"></i></td>
+                  </tr>
+              <% }) %>
+              
+          </table>
+      </div>
+      
+      
+    </div>
+</section>
+
+
+
+<%- include("../footer.ejs") %>

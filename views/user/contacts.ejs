@@ -1,0 +1,75 @@
+
+<%- include("../header.ejs") %>
+
+<section class="container mt-4">
+   <H1 class="text-center"> Contacts</H1>
+   <hr>
+    <div class="row">
+     
+        <!-- From -------->
+        <div class="col-12 col-md-6 mt-2">
+            <form action="/contact" method="POST">
+                <fieldset >
+                  <h2 >Add Contacts</h2>
+                  <div class="mb-3">
+                    <label for="" class="form-label">Groups</label>
+                    <select name="grp" id="" class="form-select">
+
+                      <% x1.forEach(function(obj){%>
+                        <option value="<%= obj._id %>"><%= obj.group %></option>
+                      <% }); %>
+
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="form-label">Name</label>
+                    <input name="name" type="text" id="" class="form-control" placeholder="Name ">
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="form-label">Phone Number</label>
+                    <input name="number" type="number" id="" class="form-control" placeholder="Phone Number ">
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="form-label">Email</label>
+                    <input name="email" type="email" id="" class="form-control" placeholder="Email ">
+                  </div>
+              
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </fieldset>
+              </form>
+        </div>
+        <div class="col-12 col-md-6 mt-2">
+            <h2> Contacts</h2>
+            <table>
+              <tr>
+                  <th>Libraries Id</th>
+                  <th>Name</th>
+                  <th>Phone Number</th>
+                  <th>Email</th>
+                  <th class="text-center">Edit</th>
+                  <th class="text-center">Delete</th>
+              </tr>
+              <% x2.forEach(function(obj){ %>
+                  <tr>
+                      <td class="msg" for="<%= obj._id %>">
+                          <%= obj.grp %> 
+                      </td>
+                 
+                      <td class="msg"> <%= obj.name %>  </td>
+                      <td class="msg"> <%= obj.number %>  </td>
+                      <td class="msg"> <%= obj.email %>  </td>
+                      <td class="text-center"><i class="bi bi-pencil-square"></i></td>
+                      <td class="text-center"><i class="bi bi-trash3"></i></td>
+                  </tr>
+              <% }) %>
+              
+          </table>
+
+          
+        </div>
+    </div>
+</section>
+
+
+
+<%- include("../footer.ejs") %>

@@ -1,0 +1,63 @@
+a{
+    color: white !important;
+    text-decoration: none !important;
+}
+.navbar{
+    background-color: #C65BCF;
+}
+.list{
+    height: 40vh;
+    overflow-y:  scroll;
+    
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 6px;
+    
+  }
+  ::-webkit-scrollbar-thumb {
+    background: aqua;
+    border-radius: 6px;
+  }
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #22997f;
+    text-align: left;
+    padding: 8px;
+    
+  }
+  
+  tr:nth-child(even) {
+    background-color: #22997f;
+  }
+
+
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  
+
+  table .msg {
+    white-space: nowrap;
+    width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  li{
+    cursor: pointer;
+  }
+  

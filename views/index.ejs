@@ -1,0 +1,79 @@
+
+<%- include("header.ejs") %>
+
+<section class="container mt-4">
+   <H1 class="text-center"> Message Portal</H1>
+   <hr>
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Groups</h3>
+        <ol class="list">
+          <% x1.forEach(function(obj){ %>
+            <li class="group" for="<%= obj._id%>"><%= obj.group %></li><hr>
+          <%})%>
+        </ol>
+
+        <h3>Contacts</h3>
+        <ol class="contr list">
+          <% x4.forEach(function(obj){ %>
+            <li class="contact" for="<%= obj._id%>"><%= obj.name %></li><hr>
+          <%})%>
+        </ol>
+      </div>
+        
+        <!-- From -------->
+        <div class="col-md-6">
+            <form action="/send-message" method="POST">
+                <fieldset >
+                  <h2 >Send Message</h2>
+               <div class="detail">
+                <div class="mb-3 Name">
+                  <label for="" class="form-label">Name</label>
+                  <input name="name" type="text" id="" class="form-control " placeholder="Name" value="">
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Phone Number</label>
+                  <input name="number" type="number" id="" class="form-control Phone" placeholder="Phone Number ">
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Email</label>
+                  <input name="email"  type="email" id="" class="form-control" placeholder="Email ">
+                </div>
+               </div>
+                  <div class="mb-3 Message">
+                    <label for="" class="form-label">Message</label>
+                    <textarea name="message"  rows="3" class="form-control " >Message Here...</textarea>
+                        
+                  </div>
+              
+                  
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </fieldset>
+              </form>
+        </div>
+
+        <div class="col-md-3">
+          <h3>Libraries</h3>
+          <ol class=" list">
+            <% x2.forEach(function(obj){ %>
+              <li class="library" for="<%= obj._id%>"><%= obj.library %></li>
+              <hr>
+            <%})%>
+       
+          </ol>
+
+          <h3>Messages</h3>
+          <ol class="msg list">
+            <% x3.forEach(function(obj){ %>
+              <li class="message" for="<%= obj._id%>"><%= obj.message %></li>
+              <hr>
+            <%})%>
+          </ol>
+      </div>
+     
+    </div>
+</section>
+
+
+
+<%- include("footer.ejs") %>

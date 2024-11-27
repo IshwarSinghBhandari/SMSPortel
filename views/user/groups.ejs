@@ -1,0 +1,48 @@
+
+<%- include("../header.ejs") %>
+
+<section class="container mt-4">
+   <H1 class="text-center"> Groups</H1>
+   <hr>
+    <div class="row">
+     
+        <!-- From -------->
+        <div class="col-12 col-md-6 mt-2">
+            <form action="/group" method="POST">
+                <fieldset >
+                  <h2 >Add Groups</h2>
+                  <div class="mb-3">
+                    <label for="" class="form-label">Group name</label>
+                    <input name="group" type="text" id="" class="form-control" placeholder="Group name ">
+                  </div>
+              
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </fieldset>
+              </form>
+        </div>
+
+        
+
+        <div class="col-12 col-md-6 mt-2">
+            <h2 > Groups</h2>
+            <table>
+             
+              <% grp.forEach(function(obj){ %>
+                
+                <tr>
+                  <td  for="<%= obj._id%>"><%= obj.group %></td>
+                  <td class="text-center"><i class="bi bi-pencil-square"></i></td>
+                  <td class="text-center"><i class="bi bi-trash3 delete-icon" style="cursor: pointer;" for="<%= obj._id %>"></i></td>
+                </tr>
+              <%})%>
+              </table>
+              
+
+          
+        </div>
+    </div>
+</section>
+
+
+
+<%- include("../footer.ejs") %>
