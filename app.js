@@ -2,22 +2,35 @@ import express from 'express';
 import { allroute } from './routes/route.js';
 import dbConnect from './database/dbconfig.js';
 import dotenv from 'dotenv';
-import bodyparser from 'body-parser';
+import bodyParser from 'body-parser';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const path = require('path');
-
-app.use(express.static(path.join(__dirname, 'public')));
-
+// Initialize dotenv for environment variables
 dotenv.config();
-dbConnect().then(()=>console.log('connected')).catch(err=>console.log('err'));
 
+// Set up __dirname in ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Database Connection
+dbConnect()
+    .then(() => console.log('Database connected'))
+    .catch((err) => console.error('Database connection error:', err));
+
+// Initialize Express app
 const app = express();
-app.use(bodyparser.urlencoded())
-app.use('/public', express.static('public'));
-app.set('view engine', 'ejs');
-app.use("/",allroute);
 
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
+app.set('view engine', 'ejs'); // Set view engine to EJS
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
-})
+// Routes
+app.use("/", allroute);
+
+// Start server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
