@@ -4,6 +4,9 @@ import dbConnect from './database/dbconfig.js';
 import dotenv from 'dotenv';
 import bodyparser from 'body-parser';
 
+const path = require('path');
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 dotenv.config();
 dbConnect().then(()=>console.log('connected')).catch(err=>console.log('err'));
